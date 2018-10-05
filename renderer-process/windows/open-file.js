@@ -8,7 +8,7 @@ const selectDirBtn = document.getElementById('select-directory')
 const notification = {
   title: 'Kukulkan :: Full Scan Finished',
   body: 'Kukulkan have finish your scan, check out the results',
-  icon: path.join(__dirname, '../../../assets/img/programming.png')
+  icon: path.join(__dirname, '../../assets/img/bell.png')
 }
 
 var walker;
