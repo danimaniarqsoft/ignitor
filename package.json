@@ -1,8 +1,8 @@
 {
-  "name": "electron-api-demos",
-  "productName": "Electron API Demos",
+  "name": "kukulkan-ai",
+  "productName": "Kukulkan AI",
   "version": "1.5.1",
-  "description": "Electron interactive API demos",
+  "description": "Kukulkan AI tools",
   "main": "main.js",
   "bin": "cli.js",
   "scripts": {
@@ -22,13 +22,13 @@
     "prepack": "check-for-leaks",
     "prepush": "check-for-leaks"
   },
-  "repository": "https://github.com/electron/electron-api-demos",
+  "repository": "https://github.com/danimaniarqsoft/ignitor",
   "keywords": [
-    "Electron",
+    "kukulkan",
     "API",
-    "demo"
+    "ai"
   ],
-  "author": "GitHub",
+  "author": "INFOTEC",
   "license": "MIT",
   "devDependencies": {
     "chai": "^3.4.1",
