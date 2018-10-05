@@ -16,40 +16,6 @@
 
     <div class="demo">
       <div class="demo-wrapper">
-        <button id="open-file-demo-toggle" class="js-container-target demo-toggle-button">Open a File or Directory
-          <div class="demo-meta u-avoid-clicks">Supports: Win, macOS, Linux <span class="demo-meta-divider">|</span> Process: Main</div>
-        </button>
-        <div class="demo-box">
-          <div class="demo-controls">
-            <button class="demo-button" id="select-directory">View Demo</button>
-            <span class="demo-response" id="selected-file"></span>
-          </div>
-          <p>In this demo, the <code>ipc</code> module is used to send a message from the renderer process instructing the main process to launch the open file (or directory) dialog. If a file is selected, the main process can send that information back to the renderer process.</p>
-          <h5>Renderer Process</h5>
-          <pre><code data-path="renderer-process/native-ui/dialogs/open-file.js"></code></pre>
-          <h5>Main Process</h5>
-          <pre><code data-path="main-process/native-ui/dialogs/open-file.js"></code></pre>
-
-          <div class="demo-protip">
-            <h2>ProTip</h2>
-            <strong>The sheet-style dialog on macOS.</strong>
-            <p>On macOS you can choose between a "sheet" dialog or a default dialog. The sheet version descends from the top of the window. To use sheet version, pass the <code>window</code> as the first argument in the dialog method.</p>
-            <pre><code class="language-js">const ipc = require('electron').ipcMain
-const dialog = require('electron').dialog
-const BrowserWindow = require('electron').BrowserWindow
-
-
-ipc.on('open-file-dialog-sheet', function (event) {
-  const window = BrowserWindow.fromWebContents(event.sender)
-  const files = dialog.showOpenDialog(window, { properties: [ 'openFile' ]})
-})</code></pre>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="demo">
-      <div class="demo-wrapper">
         <button id="error-dialog-demo-toggle" class="js-container-target demo-toggle-button">Error Dialog
           <div class="demo-meta u-avoid-clicks">Supports: Win, macOS, Linux <span class="demo-meta-divider">|</span> Process: Main</div>
         </button>
@@ -111,7 +77,6 @@ ipc.on('open-file-dialog-sheet', function (event) {
     </div>
 
     <script type="text/javascript">
-      require('./renderer-process/native-ui/dialogs/open-file')
       require('./renderer-process/native-ui/dialogs/error')
       require('./renderer-process/native-ui/dialogs/information')
       require('./renderer-process/native-ui/dialogs/save')
