@@ -11,7 +11,7 @@ const {app, BrowserWindow} = require('electron')
 
 const debug = /--debug/.test(process.argv[2])
 
-if (process.mas) app.setName('Ignitor App')
+if (process.mas) app.setName('Kukulkan AI')
 
 let mainWindow = null
 
