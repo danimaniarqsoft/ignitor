@@ -11,7 +11,7 @@ const {app, BrowserWindow} = require('electron')
 
 const debug = /--debug/.test(process.argv[2])
 
-if (process.mas) app.setName('Electron APIs')
+if (process.mas) app.setName('Ignitor App')
 
 let mainWindow = null
 
