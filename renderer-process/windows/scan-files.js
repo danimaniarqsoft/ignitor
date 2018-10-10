@@ -1,31 +1,13 @@
-const {ipcRenderer} = require('electron')
-const fs = require('fs');
-const walk = require('walk');
-const path = require('path');
-
-exports.scanFile = function (path) {
-  var walker;
-
-options = {
-    followLinks: false
-  , filters: ["Temp", "_Temp"]
-  };
-  walker = walk.walk(path, options);
-  var files = [];
-
-  walker.on("directories", function (root, dirStatsArray, next) {
-    next();
-  });
+var DirectoryStructureJSON = require('directory-structure-json');
+var basepath = '/home/daniel/Dropbox/estructura-scm/estructura';
+var fs = require('fs'); // you can select any filesystem as long as it implements the same functions that native fs uses.
  
-  walker.on("file", function (root, fileStats, next) {
-    files.push(fileStats.name);
-    fs.readFile(fileStats.name, function () {
-      next();
-    });
-  });
- 
-  walker.on("errors", function (root, nodeStatsArray, next) {
-    next();
-  });
-  return "holas";
-};
+DirectoryStructureJSON.getStructure(fs, basepath, function (err, structure, total) {
+    if (err) console.log(err);
+    console.log('there are a total of: ', total.folders, ' folders and ', total.files, ' files');
+    console.log('the structure looks like: ', JSON.stringify(structure, null, 4));
+    fs.writeFile('/home/daniel/Dropbox/estructura-scm/estructura/dir-spec.json', JSON.stringify(structure, null, 4), (err) => {
+        if (err) throw err;
+        console.log('The file has been saved!');
+      });
+});
