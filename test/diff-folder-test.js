@@ -10,5 +10,5 @@ var rightStrPath = path.join(__dirname, basepath, 'rightStr')
 var leftTree = dirTree(leftStrPath);
 var rightTree = dirTree(rightStrPath)
 var difference = diff(leftTree, rightTree)
-console.log(difference)
-console.log(JSON.stringify(leftTree, null, 4))
+console.log(difference.info)
+//console.log(JSON.stringify(leftTree, null, 4))
