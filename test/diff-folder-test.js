@@ -11,4 +11,4 @@ var leftTree = dirTree(leftStrPath);
 var rightTree = dirTree(rightStrPath)
 var difference = diff(leftTree, rightTree)
 console.log(difference)
-console.log(leftTree)
+console.log(JSON.stringify(leftTree, null, 4))

@@ -11,26 +11,29 @@ exports.diff = function (leftTree, rightTree) {
 
 var diffFolder = function (leftTree, rightTree, context, deep) {
     deep = deep + tab;
-    leftTree.children.forEach(folder => {
-        leftTree = folder
-        leftTree.isPresent = folderIsInArray(folder, rightTree.children)
-        context.push(addSpaces(deep, folder.name))
-        if (folder.children) {
-            diffFolder(leftTree, rightTree, context, deep)
+    leftTree.children.forEach(currentLeftFile => {
+        var rightFileFinded = getFileInRightFolder(currentLeftFile, rightTree.children)
+        context.push(addSpaces(deep, currentLeftFile.name))
+        if (rightFileFinded) {
+            currentLeftFile.isPresent = true
+            if (currentLeftFile.type == 'directory') {
+                diffFolder(currentLeftFile, rightFileFinded, context, deep)
+            }
+        }else{
+            currentLeftFile.isPresent = false
         }
     });
     return context
 }
 
-var folderIsInArray = function (currentFolder, children) {
-    var isPresent = false
+var getFileInRightFolder = function (currentFolder, children) {
+    var element = null
     children.forEach(testFolder => {
         if (currentFolder.name.toString() === testFolder.name.toString()) {
-            console.log('->' + currentFolder.name + ', ' + testFolder.name)
-            isPresent = true;
+            element = testFolder
         }
-    });
-    return false
+    })
+    return element
 }
 
 var addSpaces = function (deep, cadena) {
