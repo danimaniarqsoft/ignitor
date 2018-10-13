@@ -1,27 +1,29 @@
 const fs = require('fs');
 const path = require('path');
 const dirTree = require('directory-tree');
+const tab = 4;
 
-exports.diff = function (leftTree, rightTree, context) {
+exports.diff = function (leftTree, rightTree) {
     var context = []
-    var deep = -4;
-    return diffFolder(leftTree, context, deep)
+    var deep = - tab
+    return diffFolder(leftTree, rightTree, context, deep)
 }
 
-var addSpaces = function (spaceNumber, cadena) {
+var diffFolder = function (leftTree, rightTree, context, deep) {
+    deep = deep + tab;
+    leftTree.children.forEach(folder => {
+        context.push(addSpaces(deep, folder.name))
+        if (folder.children) {
+            diffFolder(folder, rightTree, context, deep)
+        }
+    });
+    return context
+}
+
+var addSpaces = function (deep, cadena) {
     var spaces = ''
-    for (let index = 0; index < spaceNumber; index++) {
+    for (let index = 0; index < deep; index++) {
         spaces = spaces + ' '
     }
     return spaces + cadena
-}
-var diffFolder = function (leftTree, lister, spaceNumber) {
-    spaceNumber = spaceNumber + 4;
-    leftTree.children.forEach(folder => {
-        lister.push(addSpaces(spaceNumber, folder.name))
-        if (folder.children) {
-            diffFolder(folder, lister, spaceNumber)
-        }
-    });
-    return lister
 }
