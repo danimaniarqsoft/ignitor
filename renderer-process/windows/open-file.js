@@ -4,6 +4,8 @@ const scanFile = require('./scan-files')
 const selectDirBtn = document.getElementById('select-directory')
 const { ipcRenderer } = require('electron')
 const diff = require('deep-diff').diff
+const observableDiff = require('deep-diff').observableDiff
+const applyChange = require('deep-diff').applyChange
 
 selectDirBtn.addEventListener('click', (event) => {
   ipcRenderer.send('open-file-dialog')
@@ -18,7 +20,12 @@ ipcRenderer.on('selected-directory', (event, sourcePath) => {
   var differences = diff(jsonContent, sourceFolder)
 
   //fs.writeFile(path.join(sourcePath.toString(), '.meta-info-diff.json'), JSON.stringify(jsonContent, null, 4), (err) => {
-   // if (err) throw err
+  // if (err) throw err
   //})
-  document.getElementById('selected-file').innerHTML = JSON.stringify(differences, null, 4)
+  observableDiff(jsonContent, sourceFolder, function (d) {
+    if (d.path[d.path.length - 1] !== 'path') {
+      //applyChange(lhs, rhs, d);
+      document.getElementById('selected-file').innerHTML = 'before: ' + d.lhs + ', after: ' + d.rhs
+    }
+  });
 })

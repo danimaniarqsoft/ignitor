@@ -10,12 +10,8 @@ const righttStr = folderScan.readFolderStructure(rightStrPath)
 const observableDiff = require('deep-diff').observableDiff
 const applyChange = require('deep-diff').applyChange
 
-observableDiff(leftStr, righttStr, function (d) {
+observableDiff(leftStr, righttStr, function (d) {  
     if (d.path[d.path.length - 1] !== 'path') {
-        console.log('<<<<<<<<<<<<<<')
-        console.log(d.lhs)
-        console.log('>>>>>>>>>>>>>>')
-        console.log(d.rhs)
         //applyChange(lhs, rhs, d);
     }
 });
