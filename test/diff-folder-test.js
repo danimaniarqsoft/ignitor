@@ -11,3 +11,4 @@ var leftTree = dirTree(leftStrPath);
 var rightTree = dirTree(rightStrPath)
 var difference = diff(leftTree, rightTree)
 console.log(difference)
+console.log(leftTree)
