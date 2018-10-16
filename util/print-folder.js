@@ -13,7 +13,7 @@ exports.printFolder = function (leftTree, rightTree) {
 var printTreeElements = function (tree, context, deep) {
     deep = deep + tab;
     tree.children.forEach(currentFile => {
-        if (currentFile.isPresent === false || !currentFile.isPresent) {
+        if (currentFile.isPresent === false || currentFile.isPresent === undefined) {
             console.log(addSpaces(deep, currentFile.name))
         }
         if (currentFile.children) {
