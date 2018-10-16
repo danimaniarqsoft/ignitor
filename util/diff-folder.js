@@ -24,6 +24,7 @@ var diffFolder = function (leftTree, rightTree, context, deep) {
             currentLeftFile.isPresent = false
         }
     });
+    context.result = leftTree;
     return context
 }
 
