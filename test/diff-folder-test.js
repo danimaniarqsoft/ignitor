@@ -13,4 +13,4 @@ var rightTree = dirTree(rightStrPath)
 
 var difference = scanFiles.diff(leftTree, rightTree)
 
-console.log(difference.result)
+scanFiles.print(leftTree)

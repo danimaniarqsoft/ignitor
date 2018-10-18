@@ -3,8 +3,10 @@
     <header class="section-header">
       <div class="section-wrapper">
         <h1>
-          <svg class="section-icon"><use xlink:href="assets/img/icons.svg#icon-windows"></use></svg>
-          Guidelines Fulfillment 
+          <svg class="section-icon">
+            <use xlink:href="assets/img/icons.svg#icon-windows"></use>
+          </svg>
+          Guidelines Fulfillment
         </h1>
         <h3>Analyze <code>Folder</code> for guideliness accomplised using kukulkan Algorithms</h3>
         <p>Just select the folder and kukulkan is going to analyze for inconsistency in your project</p>
@@ -12,17 +14,20 @@
     </header>
 
     <div class="demo">
-        <div class="demo-wrapper">
-            <button id="open-file-demo-toggle" class="js-container-target demo-toggle-button">Open a File or Directory
-              <div class="demo-meta u-avoid-clicks">Supports: Win, macOS, Linux <span class="demo-meta-divider">|</span> Algorithm: Full Scan</div>
-            </button>
-            <div class="demo-box">
-              <div class="demo-controls">
-                <button class="demo-button" id="select-directory">Select Folder</button>
-                <span class="demo-response" id="selected-file"></span>
-              </div>
-            </div>
+      <div class="demo-wrapper">
+        <button id="open-file-demo-toggle" class="js-container-target demo-toggle-button">Open a File or Directory
+          <div class="demo-meta u-avoid-clicks">Supports: Win, macOS, Linux <span class="demo-meta-divider">|</span>
+            Algorithm: Full Scan</div>
+        </button>
+        <div class="demo-box">
+          <div class="demo-controls">
+            <button class="demo-button" id="select-directory">Select Folder</button>
+            <span class="demo-response" id="selected-file"></span>
           </div>
+          <div id="folder-output">
+          </div>
+        </div>
+      </div>
     </div>
     <script type="text/javascript">
       require('./renderer-process/windows/open-file')
